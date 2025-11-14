@@ -77,3 +77,29 @@ body {
 @media (min-width: 520px) { .actions { grid-template-columns: repeat(2, minmax(0,1fr)) } }
 
 .spacer { height: 6px }
+
+/* Countdown overlay */
+.overlay {
+  position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: rgba(15, 23, 42, 0.15); backdrop-filter: blur(1px); z-index: 50;
+}
+.countdown {
+  background: linear-gradient(180deg, #ffffff, #f0f9ff);
+  border: 1px solid #e2e8f0; border-radius: 16px; padding: 18px 22px;
+  box-shadow: 0 20px 40px rgba(2,132,199,.18);
+  font-size: 36px; font-weight: 700; color: #0f172a; animation: pop-in .22s ease-out;
+}
+
+@keyframes pop-in { from { transform: scale(.9); opacity: 0 } to { transform: scale(1); opacity: 1 } }
+
+/* Button selected/locked visuals */
+.btn.selected { outline: 2px solid #38bdf8; box-shadow: 0 0 0 4px rgba(56,189,248,.25) inset }
+.btn[disabled] { opacity: .8; cursor: default }
+
+/* Tap animation */
+.btn.tap { transform: scale(.98) }
+
+/* Reduce motion support */
+@media (prefers-reduced-motion: reduce) {
+  .btn, .countdown { transition: none; animation: none }
+}
